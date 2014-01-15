@@ -1,0 +1,57 @@
+---
+# The variables file used by Redis server playbooks.
+# If not overriden in inventory or as a parameter, this is the value that will be used
+
+redis_daemonize: 'yes'
+redis_pidfile: '/var/run/redis/redis-server.pid'
+redis_port: 6379
+redis_bind:
+  - '127.0.0.1'
+redis_use_socket: false
+redis_timeout: 0
+redis_tcp_keepalive: 0
+redis_loglevel: 'notice'
+redis_logfile: '/var/log/redis/redis-server.log'
+redis_syslog_enabled: 'yes'
+redis_syslog_ident: 'redis'
+redis_syslog_facility: 'local0'
+redis_databases: 2
+redis_save_points:
+  - '900 1'
+  - '300 10'
+  - '60 10000'
+redis_stop_writes_on_bgsave_error: 'yes'
+redis_rdbcompression: 'yes' # Disable this when using Magento FPC
+redis_rdbchecksum: 'yes'
+redis_dbfilename: 'dump.rdb'
+redis_dir: '/var/lib/redis'
+redis_role: 'master'
+redis_slave_serve_stale_data: 'yes'
+redis_maxclients: 128
+redis_maxmemory: '256MB'
+redis_maxmemory_policy: 'volatile-lru'
+redis_maxmemory_samples: 3
+redis_appendonly: 'no'
+redis_appendfilename: 'appendonly.aof'
+redis_appendfsync: 'everysec'
+redis_no_appendfsync_on_rewrite: 'no'
+redis_auto_aof_rewrite_percentage: 100
+redis_auto_aof_rewrite_min_size: '64mb'
+redis_lua_time_limit: 5000
+redis_slowlog_log_slower_than: 10000
+redis_slowlog_max_len: 1024
+redis_notify_keyspace_events: '""'
+redis_hash_max_ziplist_entries: 512
+redis_hash_max_ziplist_value: 64
+redis_list_max_ziplist_entries: 512
+redis_list_max_ziplist_value: 64
+redis_set_max_intset_entries: 512
+redis_zset_max_ziplist_entries: 128
+redis_zset_max_ziplist_value: 64
+redis_activerehashing: 'yes'
+redis_client_output_buffer_limit:
+  - 'normal 0 0 0'
+  - 'slave 256mb 64mb 60'
+  - 'pubsub 32mb 8mb 60'
+redis_hz: 10
+redis_aof_rewrite_incremental_fsync: 'yes'

@@ -1,0 +1,7 @@
+---
+# Defines variables for Debian/Ubuntu
+
+redis_service: 'redis-server'
+redis_config_dir: '/etc/redis'
+redis_packages:
+  - 'redis-server'
