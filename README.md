@@ -1,10 +1,13 @@
 # Redis Role for Ansible
 
-This role installs [Redis](http://redis.io/) which is an open source, BSD licensed, advanced key-value store. The role can deploy a Redis master or a replication slave server.
+This role installs [Redis](http://redis.io/) which is an open source, BSD licensed,
+advanced key-value store. The role can deploy a Redis master or a replication
+slave server.
 
 ## Requirements
 
-This role requires [Ansible](http://www.ansibleworks.com/) version 1.4 or higher and the Debian/Ubuntu platform.
+This role requires [Ansible](http://www.ansibleworks.com/) version 1.4 or higher
+and the Debian/Ubuntu platform.
 
 ## Role Variables
 
@@ -19,7 +22,7 @@ redis_daemonize: 'yes'
 redis_port: 6379
 
 # The default interfaces Redis will listen for connections on
-redis_bind: 
+redis_bind:
   - '127.0.0.1'
 
 # The default flag for whether data should be sent to syslog
@@ -55,7 +58,8 @@ redis_maxmemory_policy: 'volatile-lru'
 # The default  operation for how to write data on disk
 redis_appendfsync: 'everysec'
 
-# Replication variables. If `redis_role` variable is 'slave', set at least these additional variables
+# Replication variables. If `redis_role` variable is 'slave', set at least these
+# additional variables
 redis_slaveof: '192.168.1.1'
 redis_masterauth: 'None'
 redis_slave_serve_stale_data: 'yes'
@@ -84,7 +88,7 @@ redis_slave_serve_stale_data: 'yes'
     - name: Apply Redis role
       hosts: redis
       roles:
-        - { role: redis, 
+        - { role: redis,
             redis_role: 'slave',
             redis_slaveof: '192.168.1.1',
             redis_masterauth: 'Secret!',
@@ -94,7 +98,9 @@ redis_slave_serve_stale_data: 'yes'
 
 ## Dependencies
 
-None.
+The following packages may be required for Debian derivatives:
+
+- `python-apt`
 
 ## License
 
