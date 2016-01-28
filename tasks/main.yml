@@ -47,6 +47,15 @@
   tags:
     - redis
 
+- name: Write log rotation template
+  template: >
+    src=logrotate-d-redis.j2
+    dest=/etc/logrotate.d/redis
+    mode=0644 owner=root group=root
+    backup=yes
+  tags:
+    - redis
+
 - name: Set the kernel paramter for VM overcommit
   sysctl: >
     name="vm.overcommit_memory"
